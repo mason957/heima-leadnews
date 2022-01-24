@@ -43,10 +43,7 @@ public class ResponseResult<T> implements Serializable {
         this.errorMessage = msg;
     }
 
-    public static ResponseResult errorResult(int code, String msg) {
-        ResponseResult result = new ResponseResult();
-        return result.error(code, msg);
-    }
+
 
     public static ResponseResult okResult(int code, String msg) {
         ResponseResult result = new ResponseResult();
@@ -59,6 +56,11 @@ public class ResponseResult<T> implements Serializable {
             result.setData(data);
         }
         return result;
+    }
+
+    public static ResponseResult errorResult(int code, String msg) {
+        ResponseResult result = new ResponseResult();
+        return result.error(code, msg);
     }
 
     public static ResponseResult errorResult(AppHttpCodeEnum enums){

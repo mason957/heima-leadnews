@@ -1,0 +1,13 @@
+# 这个配置优先级比application.yml高
+server:
+  port: 51801
+spring:
+  application:
+    name: leadnews-user
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.200.130:8848
+      config:
+        server-addr: 192.168.200.130:8848
+        file-extension: yml

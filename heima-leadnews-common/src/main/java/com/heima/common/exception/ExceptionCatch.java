@@ -13,6 +13,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ExceptionCatch {
 
     /**
+     * 处理可控异常  自定义异常
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(CustomException.class)
+    @ResponseBody
+    public ResponseResult exception(CustomException e){
+        log.error("catch exception:{}",e);
+        return ResponseResult.errorResult(e.getAppHttpCodeEnum());
+    }
+
+    /**
      * 处理不可控异常
      * @param e
      * @return
@@ -24,17 +36,5 @@ public class ExceptionCatch {
         log.error("catch exception:{}",e.getMessage());
 
         return ResponseResult.errorResult(AppHttpCodeEnum.SERVER_ERROR);
-    }
-
-    /**
-     * 处理可控异常  自定义异常
-     * @param e
-     * @return
-     */
-    @ExceptionHandler(CustomException.class)
-    @ResponseBody
-    public ResponseResult exception(CustomException e){
-        log.error("catch exception:{}",e);
-        return ResponseResult.errorResult(e.getAppHttpCodeEnum());
     }
 }
